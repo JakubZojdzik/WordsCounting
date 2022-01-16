@@ -42,7 +42,6 @@ def get_links(website_link):
             else:
                 if(not str(link["href"]).startswith("https://") and not str(link["href"]).startswith("http://") and not str(link["href"]).startswith("#") and website_link + link["href"] not in dict_href_links):
                     dict_href_links[website_link[:find_third_slash(website_link)] + '/' + link["href"]] = "Not-checked"
-
     return 0
 
 def remove_broken_urls():
@@ -69,20 +68,6 @@ def find_all_links(depth):
     print("Removing broken urls:")
     remove_broken_urls()
 
-
-
-############################################################
-
-
-# page = requests.get("https://liceum.pwr.edu.pl/", headers = headers, verify = False)
-# effect = bs(page.content, 'html.parser').get_text(separator=' ').rstrip()
-# print(effect)
-# exit()
-
-############################################################
-
-
-
 inp = input("Enter the website address for analysis: ")
 depth = input("Enter maximum depth of recursion (recommended value is from 0 to 3): ")
 depth = int(depth)
@@ -93,7 +78,6 @@ if(not inp.endswith('/')):
 page_url = inp
 if(page_url.startswith("https://liceum.pwr.edu.pl/")):
     ALO = True
-
 
 try:
     r = requests.get(page_url)
@@ -133,9 +117,3 @@ print()
 for i in range(min(50, len(sorted_keys))):
     print('#', end='')
     print(i+1, '\t', words[sorted_keys[-i-1]], 'times\t', sorted_keys[-i-1])
-
-# print(sorted_keys)
-
-# https://saper-online.pl/gra.php
-# https://oskhubert.pl/
-# https://liceum.pwr.edu.pl/
